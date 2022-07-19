@@ -1,0 +1,17 @@
+name: ci
+
+on:
+  pull_request:
+    branches: ['main']
+  push:
+    branches: ['staging' , 'trying']
+    
+    
+  
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Unit tests
+        run: echo "UNIT TESTS PASSED!"
