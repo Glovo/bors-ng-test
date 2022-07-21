@@ -1,0 +1,29 @@
+version: "3.9"
+services:
+  web:
+    image: borsng/bors-ng
+    restart: always
+    ports:
+      - "80:8000"
+    environment:
+      PORT: 8000
+      DATABASE_USE_SSL: "false"
+      DATABASE_AUTO_MIGRATE: "true"
+      ALLOW_PRIVATE_REPOS: "true"
+      PUBLIC_HOST: localhost
+      DATABASE_URL: postgres://postgres:postgres@postgres:5432/bors
+  postgres:
+    image: postgres
+    restart: always
+    volumes:
+      - datadb:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: bors
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+     
+volumes:
+  datadb:
+networks:
+  default:
+    driver: bridge
