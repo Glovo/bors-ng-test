@@ -14,4 +14,4 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Unit tests
-        run: sleep 1m && echo "UNIT TESTS PASSED!"
+        run: sleep 5m && echo "UNIT TESTS PASSED!"
